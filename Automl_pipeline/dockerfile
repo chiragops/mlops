@@ -1,0 +1,24 @@
+# Use Python 3.9 as the base image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy all files to the container
+COPY . /app
+COPY data/diabetes.csv /app/data/diabetes.csv
+COPY templates/index.html /app/templates/index.html
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN mkdir -p /app/models
+RUN python scripts/main.py
+
+EXPOSE 5000
+
+# Run the Flask app
+CMD ["python", "scripts/model_deploy.py"]
+
+# Run the main script
+#CMD ["python", "scripts/main.py"]

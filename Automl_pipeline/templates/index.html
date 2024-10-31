@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+</head>
+<body>
+    <h1>Diabetes Prediction Model</h1>
+    <form id="predictionForm" method="POST">
+        <label for="feature1">Pregnancies:</label>
+        <input type="text" id="feature1" name="Pregnancies" required><br>
+        <label for="feature2">Glucose:</label>
+        <input type="text" id="feature2" name="Glucose" required><br>
+        <label for="feature3">Blood Pressure:</label>
+        <input type="text" id="feature3" name="BloodPressure" required><br>
+        <label for="feature4">Skin Thickness:</label>
+        <input type="text" id="feature4" name="SkinThickness" required><br>
+        <label for="feature5">Insulin:</label>
+        <input type="text" id="feature5" name="Insulin" required><br>
+        <label for="feature6">BMI:</label>
+        <input type="text" id="feature6" name="BMI" required><br>
+        <label for="feature7">Diabetes Pedigree Function:</label>
+        <input type="text" id="feature7" name="DiabetesPedigreeFunction" required><br>
+        <label for="feature8">Age:</label>
+        <input type="text" id="feature8" name="Age" required><br>
+        
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction is not none %}
+        <h2>Prediction: {{ prediction }}</h2>
+        <script>
+            // Clear form inputs after the prediction is rendered
+            document.getElementById("predictionForm").reset();
+        </script>
+    {% endif %}
+</body>
+</html>
